@@ -4,6 +4,9 @@ import org.newdawn.slick.Graphics;
 
 
 public abstract class Level {
+    private static final double SPEED_FACTOR_SLOW = 0.20;
+    private static final double SPEED_FACTOR = 0.25;
+
     protected ArrayList<EntityObject> entities = new ArrayList<EntityObject>();
     protected ArrayList<InteractableEntity> interactables = new ArrayList<InteractableEntity>();
     protected int sizeX, sizeY;
@@ -18,17 +21,33 @@ public abstract class Level {
 
     public abstract void init();
 
-    public void update() {
-        if (player.getCoordX() > 200 && offset + 200 < sizeX) {
-            offset = player.getCoordX() - 200;
+    public void update(int delta) {
+        if (player.getCoordX() - offset > 300 && offset + 800 < sizeX) {
+            if (player.getCoordX() - offset > 350) {
+                offset += (int)(delta * SPEED_FACTOR);
+            } else {
+                offset += (int)(delta * SPEED_FACTOR_SLOW);
+            }
+            if (offset + 800 > sizeX) {
+                offset = sizeX - 800;
+            }
+        } else if (player.getCoordX() - offset < 200 && offset > 0) {
+            if (player.getCoordX() - offset < 150) {
+                offset -= (int)(delta * SPEED_FACTOR);
+            } else {
+                offset -= (int)(delta * SPEED_FACTOR_SLOW);
+            }
+            if (offset < 0) {
+                offset = 0;
+            }
         }
         for (EntityObject ent : entities) {
-            ent.update();
+            ent.update(delta);
         }
         for (InteractableEntity inter : interactables) {
-            inter.update();
+            inter.update(delta);
         }
-        player.update();
+        player.update(delta);
     }
 
     public void draw(Graphics g) {

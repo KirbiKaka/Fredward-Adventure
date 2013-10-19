@@ -25,7 +25,7 @@ public class Player extends EntityObject {
     }
 
     @Override
-    void update() {
+    void update(int delta) {
 
     }
 

@@ -20,7 +20,7 @@ public abstract class EntityObject {
     abstract boolean isInteractable();
     abstract boolean isSolid();
     abstract void init();
-    abstract void update();
+    abstract void update(int delta);
 
 
     void draw(Graphics g) {
@@ -109,7 +109,7 @@ public abstract class EntityObject {
         int otherSY = ent.getSizeY();
         boolean leftSideCollide = (coordX + 10 > otherCX && coordX + 10 < otherCX + otherSX) || (coordX - 10 > otherCX && coordX - 10 < otherCX + otherSX);
         boolean rightSideCollide = (coordX + sizeX + 10 > otherCX && coordX + sizeX + 10 < otherCX + otherSX) || (coordX + sizeX - 10 > otherCX && coordX + sizeX - 10 < otherCX + otherSX);
-        boolean bottomCollide = (coordY + sizeY + 10 > otherCY && coordY + sizeY + 10 < otherCY + otherSY) || (coordY + sizeY - 20 > otherCY && coordY + sizeY - 20 < otherCY + otherSY);
+        boolean bottomCollide = (coordY + sizeY + 10 > otherCY && coordY + sizeY + 10 < otherCY + otherSY) || (coordY + sizeY - 30 > otherCY && coordY + sizeY - 20 < otherCY + otherSY);
         if (leftSideCollide || rightSideCollide) {
             if (bottomCollide) {
                 return true;

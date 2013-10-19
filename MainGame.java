@@ -108,7 +108,7 @@ public class MainGame extends BasicGameState{
             levels[currentLevel].movePlayer((int)(delta * SPEED_FACTOR), 0);
         }
 
-        levels[currentLevel].update();
+        levels[currentLevel].update(delta);
 
     }
 

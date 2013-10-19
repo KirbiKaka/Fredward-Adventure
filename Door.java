@@ -44,7 +44,7 @@ public class Door extends InteractableEntity{
     }
 
     @Override
-    void update() {
+    void update(int delta) {
         // TODO Auto-generated method stub
 
     }
