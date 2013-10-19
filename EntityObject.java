@@ -8,6 +8,7 @@ public abstract class EntityObject {
     Image image;
     boolean imageCreated;
     String imageDir;
+    boolean isVisible;
 
     public EntityObject(int sizeX, int sizeY, int coordX, int coordY, String imageDir) {
         this.sizeX = sizeX;
@@ -15,6 +16,7 @@ public abstract class EntityObject {
         this.coordX = coordX;
         this.coordY = coordY;
         this.imageDir = imageDir;
+        this.isVisible = true;
     }
 
     abstract boolean isInteractable();
@@ -33,7 +35,9 @@ public abstract class EntityObject {
             }
             imageCreated = true;
         }
-        g.drawImage(image, coordX, coordY);
+        if (isVisible) {
+            g.drawImage(image, coordX, coordY);
+        }
     }
 
     void draw(Graphics g, int offset) {
@@ -46,7 +50,21 @@ public abstract class EntityObject {
             }
             imageCreated = true;
         }
-        g.drawImage(image, coordX - offset, coordY);
+        if (isVisible) {
+            g.drawImage(image, coordX - offset, coordY);
+        }
+    }
+
+    public boolean isVisible() {
+        return isVisible();
+    }
+
+    public void hide() {
+        isVisible = false;
+    }
+
+    public void show() {
+        isVisible = true;
     }
 
     public int getSizeX() {
@@ -107,9 +125,12 @@ public abstract class EntityObject {
         int otherCY = ent.getCoordY();
         int otherSX = ent.getSizeX();
         int otherSY = ent.getSizeY();
-        boolean leftSideCollide = (coordX + 10 > otherCX && coordX + 10 < otherCX + otherSX) || (coordX - 10 > otherCX && coordX - 10 < otherCX + otherSX);
-        boolean rightSideCollide = (coordX + sizeX + 10 > otherCX && coordX + sizeX + 10 < otherCX + otherSX) || (coordX + sizeX - 10 > otherCX && coordX + sizeX - 10 < otherCX + otherSX);
-        boolean bottomCollide = (coordY + sizeY + 10 > otherCY && coordY + sizeY + 10 < otherCY + otherSY) || (coordY + sizeY - 30 > otherCY && coordY + sizeY - 20 < otherCY + otherSY);
+        boolean leftSideCollide = (coordX + 10 > otherCX && coordX + 10 < otherCX + otherSX)
+                || (coordX - 10 > otherCX && coordX - 10 < otherCX + otherSX);
+        boolean rightSideCollide = (coordX + sizeX + 10 > otherCX && coordX + sizeX + 10 < otherCX + otherSX)
+                || (coordX + sizeX - 10 > otherCX && coordX + sizeX - 10 < otherCX + otherSX);
+        boolean bottomCollide = (coordY + sizeY + 10 > otherCY && coordY + sizeY + 10 < otherCY + otherSY)
+                || (coordY + sizeY - 30 > otherCY && coordY + sizeY - 30 < otherCY + otherSY);
         if (leftSideCollide || rightSideCollide) {
             if (bottomCollide) {
                 return true;

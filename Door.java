@@ -22,7 +22,16 @@ public class Door extends InteractableEntity{
     @Override
     void interact() {
         // TODO Auto-generated method stub
-        isOpen = !isOpen;
+        if (Inventory.items.contains("Key0")) {
+            isOpen = !isOpen;
+            if (isOpen) {
+                TextBox.writeText("It's open!");
+            } else {
+                TextBox.writeText("Let's block out the draft for now.");
+            }
+        } else {
+            TextBox.writeText("Locked... Maybe there's a key?");
+        }
     }
 
     @Override
@@ -61,10 +70,33 @@ public class Door extends InteractableEntity{
             }
             imageCreated = true;
         }
-        if (!isOpen) {
-            g.drawImage(image, coordX, coordY);
-        } else {
-            g.drawImage(image2, coordX, coordY);
+        if (isVisible) {
+            if (!isOpen) {
+                g.drawImage(image, coordX, coordY);
+            } else {
+                g.drawImage(image2, coordX, coordY);
+            }
+        }
+    }
+
+    @Override
+    void draw(Graphics g, int offset) {
+        if (!imageCreated) {
+            try {
+                image = new Image(imageDir);
+                image2 = new Image(imageDir2);
+            } catch (SlickException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            imageCreated = true;
+        }
+        if (isVisible) {
+            if (!isOpen) {
+                g.drawImage(image, coordX - offset, coordY);
+            } else {
+                g.drawImage(image2, coordX - offset, coordY);
+            }
         }
     }
 

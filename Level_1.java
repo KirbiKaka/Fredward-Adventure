@@ -10,19 +10,22 @@ public class Level_1 extends Level {
     @Override
     public void init() {
         player.move(20, 350);
-        for (int i = 0; i <= 800; i += 42) {
+        for (int i = 0; i <= 1000; i += 42) {
             entities.add(new Wall(42, 42, i,400, "Sprites/grassmap.png"));
         }
-        for (int i = 0; i <= 800; i += 20) {
+        for (int i = 0; i <= 1000; i += 20) {
             entities.add(new Wall(i, 600, "Sprites/wall copy.png"));
         }
-        for (int i = 0; i <= 800; i += 20) {
-            entities.add(new Wall(i, 300, "Sprites/wall copy.png"));
+        for (int i = 0; i <= 1000; i += 20) {
+            entities.add(new Wall(i, 250, "Sprites/wall copy.png"));
         }
         for (int i = 0; i <= 600; i += 20) {
-            entities.add(new Wall(-50, i, "Sprites/wall copy.png"));
+            entities.add(new Wall(-25, i, "Sprites/wall copy.png"));
         }
-        interactables.add(new Door(550, 300, "Sprites/DoorClosed.png", "Sprites/DoorOpen.png"));
+        for (int i = 0; i <= 600; i += 20) {
+            entities.add(new Wall(1010, i, "Sprites/wall copy.png"));
+        }
+        interactables.add(new Item(550, 300, "Sprites/key.png", "Key0", "Look, it's a key! Gee, I wonder what those are used for?"));
         interactables.add(new Door(250, 300, "Sprites/DoorClosed.png", "Sprites/DoorOpen.png"));
 
     }

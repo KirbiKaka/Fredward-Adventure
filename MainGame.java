@@ -20,12 +20,14 @@ public class MainGame extends BasicGameState{
     public Level[] levels;
     private int currentLevel;
     private boolean isMovingDown, isMovingUp, isMovingLeft, isMovingRight;
+    public static TextBox textBox;
 
     @Override
     public void init(GameContainer container, StateBasedGame game)
             throws SlickException {
         this.game = game;
-        player = new Player(0, 0, "Sprites/player.png");
+        player = new Player(0, 0, "Sprites/sprite.png");
+        textBox = new TextBox(0, 600-170, "Sprites/textBox.png");
         createLevels();
         levels[0].init();
         changeLevel(0);
@@ -87,9 +89,9 @@ public class MainGame extends BasicGameState{
     public void render(GameContainer container, StateBasedGame game, Graphics g)
             throws SlickException {
         g.setColor(Color.white);
-        g.drawString("Platformer", 100, 50);
 
         levels[currentLevel].draw(g);
+        textBox.draw(g);
     }
 
     @Override
@@ -109,7 +111,7 @@ public class MainGame extends BasicGameState{
         }
 
         levels[currentLevel].update(delta);
-
+        textBox.update(delta);
     }
 
     @Override
