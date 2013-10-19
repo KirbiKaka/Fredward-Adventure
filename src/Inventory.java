@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-
+/** A class consisting of static fields and methods for holding the inventory and keeping track of puzzles solved. */
 public class Inventory {
 
     public static final String vowels = "AEIOU";

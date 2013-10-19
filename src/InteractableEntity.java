@@ -1,4 +1,5 @@
 
+/** An entity that is interactable. */
 public abstract class InteractableEntity extends EntityObject {
 
     public InteractableEntity(int sizeX, int sizeY, int coordX, int coordY, String imageDir) {

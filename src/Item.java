@@ -1,9 +1,10 @@
-
+/** An interactable entity that is not solid. When interacted with, it loses visibility and puts an item in the inventory. */
 public class Item extends InteractableEntity {
 
     private boolean taken;
     private final String itemID, message;
 
+    /** Size is set to default. */
     public Item(int coordX, int coordY, String imageDir, String itemID, String message) {
         super(50, 50, coordX, coordY, imageDir);
         taken = false;
@@ -33,19 +34,16 @@ public class Item extends InteractableEntity {
 
     @Override
     boolean isSolid() {
-        // TODO Auto-generated method stub
         return false;
     }
 
     @Override
     void init() {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     void update(int delta) {
-        // TODO Auto-generated method stub
 
     }
 

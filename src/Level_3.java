@@ -1,3 +1,4 @@
+/** Level 3 */
 public class Level_3 extends Level {
 
     public Level_3 (Player player) {
@@ -8,10 +9,10 @@ public class Level_3 extends Level {
 
     @Override
     public void init() {
+        //Starting position
         player.move(30, 330);
 
-
-
+        //Background
         for (int i = 0; i <= 1500; i += 50) {
             entities.add(new Wall(50, 50, i, 400, "Sprites/StoneGround.png"));
         }

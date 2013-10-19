@@ -2,13 +2,17 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-
+/** TextBox at the bottom of the screen that controls dialogue and observations. */
 public class TextBox extends EntityObject {
 
     private static final double TEXT_SPEED_FACTOR = 0.10;
+    /** Number of miliseconds a completed String stays on the TextBox. */
+    private static final int TEXT_DURATION = 5000;
     private static String text;
-    //how much of the string is written so far
+
+    /** How much of the String written so far. */
     private static int charsWritten;
+    /** How long the String has been completely written. */
     private static double durationDone;
 
     public TextBox(int coordX, int coordY, String imageDir) {
@@ -29,19 +33,16 @@ public class TextBox extends EntityObject {
 
     @Override
     boolean isInteractable() {
-        // TODO Auto-generated method stub
         return false;
     }
 
     @Override
     boolean isSolid() {
-        // TODO Auto-generated method stub
         return false;
     }
 
     @Override
     void init() {
-        // TODO Auto-generated method stub
     }
 
     @Override
@@ -50,13 +51,12 @@ public class TextBox extends EntityObject {
             try {
                 image = new Image(imageDir);
             } catch (SlickException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
             imageCreated = true;
         }
         g.drawImage(image, coordX, coordY);
-        if (durationDone != -1 && durationDone < 5000) {
+        if (durationDone != -1 && durationDone < TEXT_DURATION) {
             String s = "";
             for (int i = 0; i < charsWritten; i++) {
                 s += TextBox.text.charAt(i);
@@ -67,7 +67,6 @@ public class TextBox extends EntityObject {
 
     @Override
     void update(int delta) {
-        // TODO Auto-generated method stub
         if (TextBox.text != null) {
             charsWritten += delta * TEXT_SPEED_FACTOR;
             if (charsWritten >= text.length()) {

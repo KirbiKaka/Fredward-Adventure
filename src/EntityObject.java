@@ -2,7 +2,8 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-//Everything a "thing" on the map should be able to do
+/** An object that exists in the gamespace during the MainGame State.
+ * EntityObjects can be interactable or solid. */
 public abstract class EntityObject {
     protected int sizeX, sizeY, coordX, coordY;
     Image image;
@@ -101,8 +102,8 @@ public abstract class EntityObject {
         coordY += y;
     }
 
-    // entityObject is a solid entity
-    // true if you can move, despite the entity
+    /** Returns true if moving this EntityObject (x, y) would not cause collision with ent.
+     * Mainly tracks the feet/bottom of the EntityObject. */
     public boolean canMove(int x, int y, EntityObject ent) {
         int otherCX = ent.getCoordX();
         int otherCY = ent.getCoordY();
@@ -120,6 +121,8 @@ public abstract class EntityObject {
         return true;
     }
 
+    /** Returns true is this EntityObject is very close to ent.
+     * Mainly tracks the feet/bottom of the EntityObject. */
     public boolean isTouching(EntityObject ent) {
         int otherCX = ent.getCoordX();
         int otherCY = ent.getCoordY();

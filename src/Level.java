@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 import org.newdawn.slick.Graphics;
 
-
+/** Abstract class for levels/stages in the game */
 public abstract class Level {
     private static final double SPEED_FACTOR_SLOW = 0.20;
     private static final double SPEED_FACTOR = 0.25;
@@ -11,7 +11,7 @@ public abstract class Level {
     protected ArrayList<InteractableEntity> interactables = new ArrayList<InteractableEntity>();
     protected int sizeX, sizeY;
     protected Player player;
-    //for scrolling the map
+    /** Used for scrolling the camera. */
     int offset;
 
     public Level(Player player) {
@@ -22,6 +22,7 @@ public abstract class Level {
     public abstract void init();
 
     public void update(int delta) {
+        //Scrolls the camera.
         if (player.getCoordX() - offset > 475 && offset + 800 < sizeX) {
             if (player.getCoordX() - offset > 550) {
                 offset += (int)(delta * SPEED_FACTOR);
@@ -41,6 +42,7 @@ public abstract class Level {
                 offset = 0;
             }
         }
+        //Updates all Entities
         for (EntityObject ent : entities) {
             ent.update(delta);
         }
@@ -80,6 +82,7 @@ public abstract class Level {
         return offset;
     }
 
+    /** Attempts to move the player, only if there will be no collision with any solid entities. */
     public boolean movePlayer(int x, int y) {
         for (EntityObject ent : entities) {
             if (ent != null && ent.isSolid() && !(ent instanceof Player)) {
@@ -99,6 +102,7 @@ public abstract class Level {
         return true;
     }
 
+    /** Checks if the player is close to any interactables, and interacts with it. */
     public boolean tryInteract() {
         for (InteractableEntity inter : interactables) {
             if (inter != null && inter.isInteractable()) {

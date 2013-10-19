@@ -2,17 +2,18 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-
-
+/** A special Entity that represents the Player. */
 public class Player extends EntityObject {
 
     public static final int PLAYER_SIZE_X = 100;
     public static final int PLAYER_SIZE_Y = 100;
     private final int animationDelay = 300;
 
+    /** Fields used for animation. */
     private boolean movingLeft, movingRight;
     private double accumulatedDelay;
     private boolean animatedLeft, animatedRight;
+
     private Image left, right;
 
     public Player(int coordX, int coordY, String imageDir) {
@@ -40,11 +41,11 @@ public class Player extends EntityObject {
                 left = new Image("Sprites/spriteLeft.png");
                 right = new Image("Sprites/spriteRight.png");
             } catch (SlickException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
             imageCreated = true;
         }
+        /** Controls basic animation. */
         if (isVisible) {
             if (movingRight) {
                 if (accumulatedDelay >= animationDelay) {

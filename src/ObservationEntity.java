@@ -1,4 +1,4 @@
-
+/** An Entity that is solid and interactable, but interaction only yields a message on the TextBox. */
 public class ObservationEntity extends InteractableEntity {
 
     private final String message;
@@ -17,19 +17,16 @@ public class ObservationEntity extends InteractableEntity {
 
     @Override
     boolean isSolid() {
-        // TODO Auto-generated method stub
         return true;
     }
 
     @Override
     void init() {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     void update(int delta) {
-        // TODO Auto-generated method stub
 
     }
 

@@ -1,4 +1,4 @@
-
+/** The first puzzle of the game. In Level_2. Involves 4 Levers. */
 public class Puzzle_1 {
 
     private final Lever a, b, c, d;

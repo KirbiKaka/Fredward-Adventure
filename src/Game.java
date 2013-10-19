@@ -3,14 +3,15 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
+/** The Main class for the Game. */
 public class Game extends StateBasedGame {
+
     private final MainMenu mainMenu;
+
     public Game() {
         super("Fredward Adventures");
         mainMenu = new MainMenu();
     }
-    /* Gets the background of the game. */
-
 
     @Override
     public void initStatesList(GameContainer container) throws SlickException {
@@ -18,6 +19,7 @@ public class Game extends StateBasedGame {
         addState(new OptionsMenu());
         addState(new MainGame());
     }
+
     /** Return the mainMenu. */
     MainMenu getMainMenu() {
         return mainMenu;
@@ -25,7 +27,6 @@ public class Game extends StateBasedGame {
 
     public static void main(String[] args) {
         try {
-
             Game game = new Game();
             AppGameContainer app = new AppGameContainer(game, 800, 600, false);
             game.init(app);

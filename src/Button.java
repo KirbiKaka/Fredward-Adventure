@@ -2,14 +2,19 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-
+/** An entity that is solid, can be interacted with exactly once (pressing the button), and is attached to a puzzle */
 public class Button extends InteractableEntity{
 
+    /** The String added to Inventory.puzzles when this button is pressed. */
     private final String puzzle;
+
+    /** Holds the image information for the image of the button pressed down. */
     private Image image2;
     private final String imageDir2;
+
     private boolean isPressed;
 
+    /** Size is set to default values. */
     public Button(int coordX, int coordY, String imageDir, String imageDir2, String puzzle) {
         super(42, 30, coordX, coordY, imageDir);
         this.puzzle = puzzle;
@@ -26,7 +31,6 @@ public class Button extends InteractableEntity{
 
     @Override
     void interact() {
-        // TODO Auto-generated method stub
         if (isPressed) {
             TextBox.writeText("Wow, I'm sure you're accomplishing a lot right now.");
         } else {
@@ -38,7 +42,6 @@ public class Button extends InteractableEntity{
 
     @Override
     boolean isSolid() {
-        // TODO Auto-generated method stub
         return true;
     }
 
@@ -69,13 +72,11 @@ public class Button extends InteractableEntity{
 
     @Override
     void init() {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     void update(int delta) {
-        // TODO Auto-generated method stub
 
     }
 

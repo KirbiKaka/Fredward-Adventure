@@ -2,7 +2,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-
+/** A solid, interactable object that becomes non-solid when a puzzle is solved. Does not open and close on subsequent interactions. */
 public class PuzzleWall extends InteractableEntity{
 
     private boolean isOpen;
@@ -40,7 +40,6 @@ public class PuzzleWall extends InteractableEntity{
 
     @Override
     void interact() {
-        // TODO Auto-generated method stub
         if (Inventory.puzzles.contains(puzzle)) {
             if (isOpen) {
                 TextBox.writeText(open);
@@ -55,47 +54,22 @@ public class PuzzleWall extends InteractableEntity{
 
     @Override
     boolean isInteractable() {
-        // TODO Auto-generated method stub
         return true;
     }
 
     @Override
     boolean isSolid() {
-        // TODO Auto-generated method stub
         return !isOpen;
     }
 
     @Override
     void init() {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     void update(int delta) {
-        // TODO Auto-generated method stub
 
-    }
-
-    @Override
-    void draw(Graphics g) {
-        if (!imageCreated) {
-            try {
-                image = new Image(imageDir);
-                image2 = new Image(imageDir2);
-            } catch (SlickException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            imageCreated = true;
-        }
-        if (isVisible) {
-            if (!isOpen) {
-                g.drawImage(image, coordX, coordY);
-            } else {
-                g.drawImage(image2, coordX, coordY);
-            }
-        }
     }
 
     @Override
@@ -105,7 +79,6 @@ public class PuzzleWall extends InteractableEntity{
                 image = new Image(imageDir);
                 image2 = new Image(imageDir2);
             } catch (SlickException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
             imageCreated = true;

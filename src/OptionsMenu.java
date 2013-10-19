@@ -9,36 +9,34 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
+/** Game state for the Options menu, reachable from the Main Menu. */
 public class OptionsMenu extends BasicGameState{
     private boolean imageMade = false;
     public static final int STATE_ID = 1;
-    private static final int NUM_OPTIONS = 1;
+    private static final int NUM_OPTIONS = 2;
     private StateBasedGame game;
+    private GameContainer container;
     private int selection = 0;
     private Image background;
-    //private Image playGame;
     private Image option;
-    //private Image quit;
     private Image arrow;
     private Image back;
-
+    private Image fullscreenON, fullscreenOFF;
 
     @Override
     public void init(GameContainer container, StateBasedGame game)
         throws SlickException {
-
+        this.container = container;
         this.game = game;
-        //background = new Image("Sprites/background copy.png");
-
     }
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g)
         throws SlickException {
         if (!imageMade) {
-            background = new Image("Sprites/background copy.png"); //dont keep here
-            //playGame = new Image("Sprites/playgame.png");
-            //quit = new Image("Sprites/quit.png");
+            background = new Image("Sprites/background copy.png");
+            fullscreenON = new Image("Sprites/FullscreenOn.png");
+            fullscreenOFF = new Image("Sprites/FullscreenOff.png");
             option = new Image("Sprites/options.png");
             arrow = new Image("Sprites/arrow.png");
             back = new Image("Sprites/back.png");
@@ -49,10 +47,17 @@ public class OptionsMenu extends BasicGameState{
         g.drawImage(option,100,50);
         g.drawImage(background, 0, 0);
         if (selection == 0) {
-            g.drawImage(arrow,0, 53);
-            g.drawImage(back, 210, 48);
-            //g.drawString("> 1. Back <", 50, 100);
+            g.drawImage(arrow, 0, 53);
+        } else if (selection == 1) {
+            g.drawImage(arrow, 0, 153);
         }
+
+        if (container.isFullscreen()) {
+            g.drawImage(fullscreenON, 200, 58);
+        } else {
+            g.drawImage(fullscreenOFF, 200, 58);
+        }
+        g.drawImage(back, 210, 148);
 
     }
 
@@ -60,6 +65,13 @@ public class OptionsMenu extends BasicGameState{
     public void keyReleased(int key, char c) {
         switch(key) {
         case Input.KEY_1:
+            try {
+                container.setFullscreen(!container.isFullscreen());
+            } catch (SlickException e) {
+                e.printStackTrace();
+            }
+            break;
+        case Input.KEY_2:
             game.enterState(MainMenu.STATE_ID, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
             break;
         case Input.KEY_DOWN:
@@ -75,6 +87,13 @@ public class OptionsMenu extends BasicGameState{
         case Input.KEY_ENTER:
             switch(selection) {
             case 0:
+                try {
+                    container.setFullscreen(!container.isFullscreen());
+                } catch (SlickException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case 1:
                 game.enterState(MainMenu.STATE_ID, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
                 break;
             }
@@ -82,6 +101,13 @@ public class OptionsMenu extends BasicGameState{
         case Input.KEY_SPACE:
             switch(selection) {
             case 0:
+                try {
+                    container.setFullscreen(!container.isFullscreen());
+                } catch (SlickException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case 1:
                 game.enterState(MainMenu.STATE_ID, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
                 break;
             }
@@ -94,13 +120,11 @@ public class OptionsMenu extends BasicGameState{
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta)
         throws SlickException {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     public int getID() {
-        // TODO Auto-generated method stub
         return STATE_ID;
     }
 

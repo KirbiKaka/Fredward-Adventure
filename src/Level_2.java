@@ -1,4 +1,4 @@
-
+/** Level 2. */
 public class Level_2 extends Level {
 
     private Puzzle_1 puzzle;
@@ -11,7 +11,10 @@ public class Level_2 extends Level {
 
     @Override
     public void init() {
+        //Starting position
         player.move(30, 330);
+
+        //Sets up the lever puzzle
         Lever a = new Lever(44, 33, 540, 300, "Sprites/leverLeft.png", "Sprites/leverRight.png", "Fence-Hopping License");
         Lever b = new Lever(44, 33, 640, 300, "Sprites/leverLeft.png", "Sprites/leverRight.png", "Fence-Hopping License");
         Lever c = new Lever(44, 33, 740, 300, "Sprites/leverLeft.png", "Sprites/leverRight.png", "Fence-Hopping License");
@@ -23,14 +26,17 @@ public class Level_2 extends Level {
         interactables.add(c);
         interactables.add(d);
 
-        interactables.add(new ObservationEntity(40, 40, 1250, 260, "Sprites/sign.png", "A little advice:\nLosers rarely read letters.\nAnd if you solve puzzles by randomly hittings things,\nthen \"screw you\" too!"));
+        interactables.add(new ObservationEntity(40, 40, 1250, 260, "Sprites/sign.png", "A little advice:\n\"Losers rarely read letters.\"\nAnd if you solve puzzles by randomly hittings things,\nthen \"screw you\" too!"));
 
+        //Exits
         interactables.add(new Exit(50, 50, 1450, 300, "Sprites/stone.png", 2, "As you enter the castle, a wave an anxiety washes over you..." +
         		"                                         " +
         		"\nYou really need to pee."));
         interactables.add(new Exit(50, 50, 1450, 350, "Sprites/stone.png", 2, "As you enter the castle, a wave an anxiety washes over you..." +
         		"                                         " +
         		"\nYou really need to pee."));
+
+        //Background
         for (int i = 0; i <= 1500; i += 50) {
             entities.add(new Wall(50, 50, i, 400, "Sprites/StoneGround.png"));
         }
@@ -58,6 +64,7 @@ public class Level_2 extends Level {
             entities.add(new Wall(50, 20, 1510, i, "Sprites/stoneWall.png"));
         }
 
+        //PuzzleWalls
         interactables.add(new PuzzleWall(42, 40, 1350, 280, "Sprites/shortFence.png", "Sprites/shortFence.png", "Fence-Hopping License",
                 "You could walk over this really short fence, but you feel you owe it to yourself\nto at least solve the puzzle behind you.",
                 "Feeling a little silly, letting that short fence stop you, eh?",
@@ -72,6 +79,7 @@ public class Level_2 extends Level {
                 "Feeling confident with your newly prescribed authoritative affirmations,\nyou cross the fence."));
     }
 
+    /** Updates normally and then checks if the puzzle has been solved or not. */
     @Override
     public void update(int delta) {
         super.update(delta);

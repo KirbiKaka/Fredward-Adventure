@@ -1,5 +1,3 @@
-
-
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -8,18 +6,21 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+/** Game state for the main game screen, where most gameplay happens. */
 public class MainGame extends BasicGameState{
 
     public static final int STATE_ID = 2;
     private static final int NUM_OF_LEVELS = 3;
+    /** Affects movement speed. */
     private static final double SPEED_FACTOR = 0.25;
-
 
     private StateBasedGame game;
     private Player player;
     public static Level[] levels;
     private static int currentLevel;
     private boolean isMovingDown, isMovingUp, isMovingLeft, isMovingRight;
+
+    /** TextBox at the bottom of the screen. */
     public static TextBox textBox;
 
     @Override
@@ -30,7 +31,7 @@ public class MainGame extends BasicGameState{
         textBox = new TextBox(0, 600-170, "Sprites/textBox.png");
         createLevels();
         changeLevel(0);
-        TextBox.writeText("I'm Fredward. Nice to meet you.");
+        TextBox.writeText("I'm Fredward. Nice to meet you.\n\n\n\n*Press I to check your inventory*");
     }
 
     public static void changeLevel(int level) {
@@ -122,7 +123,6 @@ public class MainGame extends BasicGameState{
 
     @Override
     public int getID() {
-        // TODO Auto-generated method stub
         return STATE_ID;
     }
 
