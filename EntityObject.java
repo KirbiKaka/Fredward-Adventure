@@ -108,8 +108,8 @@ public abstract class EntityObject {
         int otherCY = ent.getCoordY();
         int otherSX = ent.getSizeX();
         int otherSY = ent.getSizeY();
-        boolean leftSideCollide = coordX + x + 2 > otherCX && coordX + x + 2 < otherCX + otherSX;
-        boolean rightSideCollide = coordX + sizeX + x - 2 >= otherCX && coordX + sizeX + x - 2 < otherCX + otherSX;
+        boolean leftSideCollide = coordX + x + 5 > otherCX && coordX + x + 5 < otherCX + otherSX;
+        boolean rightSideCollide = coordX + sizeX + x - 5 >= otherCX && coordX + sizeX + x - 5 < otherCX + otherSX;
         boolean bottomCollide = coordY + sizeY + y >= otherCY && coordY + sizeY + y < otherCY + otherSY;
         boolean topCollide = coordY + sizeY + y - 10 >= otherCY && coordY + sizeY + y - 10 < otherCY + otherSY;
         if (leftSideCollide || rightSideCollide) {
@@ -125,14 +125,16 @@ public abstract class EntityObject {
         int otherCY = ent.getCoordY();
         int otherSX = ent.getSizeX();
         int otherSY = ent.getSizeY();
-        boolean leftSideCollide = (coordX + 10 > otherCX && coordX + 10 < otherCX + otherSX)
-                || (coordX - 10 > otherCX && coordX - 10 < otherCX + otherSX);
-        boolean rightSideCollide = (coordX + sizeX + 10 > otherCX && coordX + sizeX + 10 < otherCX + otherSX)
-                || (coordX + sizeX - 10 > otherCX && coordX + sizeX - 10 < otherCX + otherSX);
-        boolean bottomCollide = (coordY + sizeY + 10 > otherCY && coordY + sizeY + 10 < otherCY + otherSY)
+        boolean leftSideCollide = (coordX + 20 > otherCX && coordX + 20 < otherCX + otherSX)
+                || (coordX - 20 > otherCX && coordX - 20 < otherCX + otherSX);
+        boolean rightSideCollide = (coordX + sizeX + 20 > otherCX && coordX + sizeX + 20 < otherCX + otherSX)
+                || (coordX + sizeX - 20 > otherCX && coordX + sizeX - 20 < otherCX + otherSX);
+        boolean bottomCollide = (coordY + sizeY + 20 > otherCY && coordY + sizeY + 20 < otherCY + otherSY)
                 || (coordY + sizeY - 30 > otherCY && coordY + sizeY - 30 < otherCY + otherSY);
+        boolean bottomCollide2 = (coordY + sizeY + 10 > otherCY && coordY + sizeY + 10 < otherCY + otherSY)
+                || (coordY + sizeY - 10 > otherCY && coordY + sizeY - 10 < otherCY + otherSY);
         if (leftSideCollide || rightSideCollide) {
-            if (bottomCollide) {
+            if (bottomCollide || bottomCollide2) {
                 return true;
             }
         }

@@ -6,7 +6,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Game extends StateBasedGame {
     private final MainMenu mainMenu;
     public Game() {
-        super("SimpleTest");
+        super("Fredward Adventures");
         mainMenu = new MainMenu();
     }
     /* Gets the background of the game. */

@@ -22,8 +22,8 @@ public abstract class Level {
     public abstract void init();
 
     public void update(int delta) {
-        if (player.getCoordX() - offset > 300 && offset + 800 < sizeX) {
-            if (player.getCoordX() - offset > 350) {
+        if (player.getCoordX() - offset > 475 && offset + 800 < sizeX) {
+            if (player.getCoordX() - offset > 550) {
                 offset += (int)(delta * SPEED_FACTOR);
             } else {
                 offset += (int)(delta * SPEED_FACTOR_SLOW);
@@ -31,8 +31,8 @@ public abstract class Level {
             if (offset + 800 > sizeX) {
                 offset = sizeX - 800;
             }
-        } else if (player.getCoordX() - offset < 200 && offset > 0) {
-            if (player.getCoordX() - offset < 150) {
+        } else if (player.getCoordX() - offset < 325 && offset > 0) {
+            if (player.getCoordX() - offset < 250) {
                 offset -= (int)(delta * SPEED_FACTOR);
             } else {
                 offset -= (int)(delta * SPEED_FACTOR_SLOW);

@@ -31,6 +31,7 @@ public class MainGame extends BasicGameState{
         createLevels();
         levels[0].init();
         changeLevel(0);
+        TextBox.writeText("I'm Fredward. Nice to meet you.");
     }
 
     public void changeLevel(int level) {
@@ -59,6 +60,9 @@ public class MainGame extends BasicGameState{
             break;
         case Input.KEY_SPACE:
             levels[currentLevel].tryInteract();
+            break;
+        case Input.KEY_I:
+            Inventory.printItems();
             break;
         default:
             break;

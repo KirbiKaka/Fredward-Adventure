@@ -8,29 +8,32 @@ public class Door extends InteractableEntity{
     private boolean isOpen;
     private final String imageDir2;
     private Image image2;
+    private final String key;
 
-    public Door(int coordX, int coordY, String imageDir, String imageDir2) {
-        super(50, 50, coordX, coordY, imageDir);
+    public Door(int coordX, int coordY, String imageDir, String imageDir2, String key) {
+        super(50, 67, coordX, coordY, imageDir);
         this.imageDir2 = imageDir2;
+        this.key = key;
     }
 
-    public Door(int sizeX, int sizeY, int coordX, int coordY, String imageDir, String imageDir2) {
+    public Door(int sizeX, int sizeY, int coordX, int coordY, String imageDir, String imageDir2, String key) {
         super(sizeX, sizeY, coordX, coordY, imageDir);
         this.imageDir2 = imageDir2;
+        this.key = key;
     }
 
     @Override
     void interact() {
         // TODO Auto-generated method stub
-        if (Inventory.items.contains("Key0")) {
+        if (Inventory.items.contains(key)) {
             isOpen = !isOpen;
             if (isOpen) {
-                TextBox.writeText("It's open!");
+                TextBox.writeText("Jeepers, it's open now!");
             } else {
-                TextBox.writeText("Let's block out the draft for now.");
+                TextBox.writeText("Let's block out the draft, eh?");
             }
         } else {
-            TextBox.writeText("Locked... Maybe there's a key?");
+            TextBox.writeText("Locked... Maybe there's a key?\n                                   \n...nah. Probably not.");
         }
     }
 
