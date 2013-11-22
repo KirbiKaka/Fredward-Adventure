@@ -11,7 +11,7 @@ public class Exit extends InteractableEntity {
         super(sizeX, sizeY, coordX, coordY, imageDir);
         this.exitID = exitID;
         this.message = message;
-        isVisible = false;
+        isVisible = true;
     }
 
     @Override

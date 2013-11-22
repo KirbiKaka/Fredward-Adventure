@@ -9,6 +9,10 @@ public class Level_2 extends Level {
         sizeY = 600;
     }
 
+    public static int getLevelID() {
+        return 2;
+    }
+
     @Override
     public void init() {
         //Starting position
@@ -26,13 +30,13 @@ public class Level_2 extends Level {
         interactables.add(c);
         interactables.add(d);
 
-        interactables.add(new ObservationEntity(40, 40, 1250, 260, "Sprites/sign.png", "A little advice:\n\"Losers rarely read letters.\"\nAnd if you solve puzzles by randomly hittings things,\nthen \"screw you\" too!"));
+        interactables.add(new ObservationEntity(40, 40, 1250, 260, "Sprites/sign.png", "A little advice:\n\"Losers rarely read letters.\"\nAnd if you solve puzzles by randomly hittings things,\nthen screw you!"));
 
         //Exits
-        interactables.add(new Exit(50, 50, 1450, 300, "Sprites/stone.png", 2, "As you enter the castle, a wave an anxiety washes over you..." +
+        interactables.add(new Exit(50, 50, 1450, 300, "Sprites/stone.png", Level_3.getLevelID(), "As you enter the castle, a wave an anxiety washes over you..." +
         		"                                         " +
         		"\nYou really need to pee."));
-        interactables.add(new Exit(50, 50, 1450, 350, "Sprites/stone.png", 2, "As you enter the castle, a wave an anxiety washes over you..." +
+        interactables.add(new Exit(50, 50, 1450, 350, "Sprites/stone.png", Level_3.getLevelID(), "As you enter the castle, a wave an anxiety washes over you..." +
         		"                                         " +
         		"\nYou really need to pee."));
 

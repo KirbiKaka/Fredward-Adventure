@@ -10,7 +10,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class MainGame extends BasicGameState{
 
     public static final int STATE_ID = 2;
-    private static final int NUM_OF_LEVELS = 3;
+    private static final int NUM_OF_LEVELS = 10;
     /** Affects movement speed. */
     private static final double SPEED_FACTOR = 0.25;
 
@@ -42,8 +42,9 @@ public class MainGame extends BasicGameState{
     private void createLevels() {
         levels = new Level[NUM_OF_LEVELS];
         levels[0] = new Level_1(player);
-        levels[1] = new Level_2(player);
-        levels[2] = new Level_3(player);
+        levels[1] = new Level_1_1(player);
+        levels[2] = new Level_2(player);
+        levels[3] = new Level_3(player);
     }
 
     @Override

@@ -31,7 +31,6 @@ public abstract class EntityObject {
             try {
                 image = new Image(imageDir);
             } catch (SlickException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
             imageCreated = true;
@@ -46,7 +45,6 @@ public abstract class EntityObject {
             try {
                 image = new Image(imageDir);
             } catch (SlickException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
             imageCreated = true;

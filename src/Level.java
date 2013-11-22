@@ -14,6 +14,7 @@ public abstract class Level {
     /** Used for scrolling the camera. */
     int offset;
 
+
     public Level(Player player) {
         this.player = player;
         offset = 0;
@@ -80,6 +81,10 @@ public abstract class Level {
 
     public int getOffset() {
         return offset;
+    }
+
+    public static int getLevelID() {
+        return 0;
     }
 
     /** Attempts to move the player, only if there will be no collision with any solid entities. */

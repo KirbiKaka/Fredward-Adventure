@@ -7,6 +7,10 @@ public class Level_3 extends Level {
         sizeY = 600;
     }
 
+    public static int getLevelID() {
+        return 3;
+    }
+
     @Override
     public void init() {
         //Starting position
